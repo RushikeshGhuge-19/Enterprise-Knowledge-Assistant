@@ -1,5 +1,12 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+
+from app.db import Base, engine
+from app.models.users import User
+
+# Create tables
+Base.metadata.create_all(bind=engine)
+
 from app.api import auth
 
 app = FastAPI(title="Knowledge Assistant API")

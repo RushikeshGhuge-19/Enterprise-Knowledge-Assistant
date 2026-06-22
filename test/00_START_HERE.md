@@ -7,6 +7,7 @@
 ## ⚡ What You Have (30 seconds)
 
 A **production-ready FastAPI backend** with:
+
 - ✅ User authentication (JWT + bcrypt)
 - ✅ PostgreSQL database
 - ✅ 4 working endpoints
@@ -21,14 +22,18 @@ A **production-ready FastAPI backend** with:
 ## 🎯 Next 5 Minutes
 
 ### Step 1: Read Navigation Guide
+
 **File:** `INDEX.md` (2 min)
+
 - See all 31 files
 - Understand what each does
 - Know where to find what you need
 
 ### Step 2: Quick Setup
+
 **File:** `QUICK_START.md` (3 min)
 Copy-paste these commands:
+
 ```bash
 python3.10 -m venv venv
 source venv/bin/activate
@@ -46,11 +51,13 @@ python -m uvicorn main:app --reload
 ## 📋 Full Execution Plan
 
 ### Option A: Just Run It (10 min total)
+
 1. `QUICK_START.md` — Setup (5 min)
 2. `test_auth.py` — Verify (2 min)
 3. `RAILWAY_DEPLOY.md` — Deploy (3 min)
 
 ### Option B: Understand It First (30 min)
+
 1. `INDEX.md` — Navigation (5 min)
 2. `ARCHITECTURE.md` — How it works (10 min)
 3. `QUICK_START.md` — Setup (5 min)
@@ -58,6 +65,7 @@ python -m uvicorn main:app --reload
 5. `RAILWAY_DEPLOY.md` — Deploy (5 min)
 
 ### Option C: Deep Dive (1 hour)
+
 1. `WEEK1_CHECKLIST.md` — Day-by-day plan
 2. `README.md` — Complete guide
 3. Code walkthrough
@@ -67,14 +75,14 @@ python -m uvicorn main:app --reload
 
 ## 📂 Key Files at a Glance
 
-| When | Read This | Time |
-|------|-----------|------|
-| First time | `INDEX.md` | 5 min |
-| Want to start | `QUICK_START.md` | 5 min |
-| Understand code | `ARCHITECTURE.md` | 10 min |
-| Test endpoints | `API_REFERENCE.md` | 5 min |
-| Deploy live | `RAILWAY_DEPLOY.md` | 5 min |
-| See all files | `FILE_MANIFEST.txt` | 2 min |
+| When            | Read This             | Time   |
+| --------------- | --------------------- | ------ |
+| First time      | `INDEX.md`          | 5 min  |
+| Want to start   | `QUICK_START.md`    | 5 min  |
+| Understand code | `ARCHITECTURE.md`   | 10 min |
+| Test endpoints  | `API_REFERENCE.md`  | 5 min  |
+| Deploy live     | `RAILWAY_DEPLOY.md` | 5 min  |
+| See all files   | `FILE_MANIFEST.txt` | 2 min  |
 
 ---
 
@@ -99,6 +107,7 @@ GET    /health            → Server status
 ```
 
 Test them all:
+
 ```bash
 python test_auth.py
 # Results: 7/7 tests passed ✓
@@ -109,6 +118,7 @@ python test_auth.py
 ## 🎓 What You'll Learn
 
 Using this code, you understand:
+
 - FastAPI (async Python web framework)
 - SQLAlchemy (database ORM)
 - JWT authentication (stateless, scalable)
@@ -141,16 +151,19 @@ Your backend is now live on Railway. Scale automatically.
 **PICK ONE:**
 
 ### 👉 Just Run It
+
 → Open `QUICK_START.md`
 → Copy-paste 6 commands
 → Server running in 5 min
 
 ### 👉 Understand First
+
 → Open `INDEX.md`
 → Pick a file to read
 → Learn the architecture
 
 ### 👉 Go Deep
+
 → Open `WEEK1_CHECKLIST.md`
 → Follow day-by-day
 → Understand every line
@@ -233,13 +246,13 @@ Week 4
 
 ## 🆘 Need Help?
 
-| Problem | Solution |
-|---------|----------|
-| "connection refused" | Check `docker-compose ps` |
-| "DATABASE_URL not set" | Copy `.env.example` to `.env` |
-| Tests failing | Run `docker-compose down -v && docker-compose up -d` |
-| Deployment failed | Check `railway logs -f` |
-| Code questions | Read `ARCHITECTURE.md` |
+| Problem                | Solution                                               |
+| ---------------------- | ------------------------------------------------------ |
+| "connection refused"   | Check `docker-compose ps`                            |
+| "DATABASE_URL not set" | Copy `.env.example` to `.env`                      |
+| Tests failing          | Run `docker-compose down -v && docker-compose up -d` |
+| Deployment failed      | Check `railway logs -f`                              |
+| Code questions         | Read `ARCHITECTURE.md`                               |
 
 ---
 
@@ -254,6 +267,7 @@ Everything works. Documentation is complete. Tests pass.
 ## 📞 One-Minute Summary
 
 You got a complete, tested, documented FastAPI backend with:
+
 - User registration + login
 - JWT token-based auth
 - PostgreSQL database
