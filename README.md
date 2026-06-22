@@ -1,5 +1,5 @@
 ﻿# Enterprise-Knowledge-Assistant
-# Enterprise Knowledge Assistant – Week 1
+
 
 ## Overview
 
