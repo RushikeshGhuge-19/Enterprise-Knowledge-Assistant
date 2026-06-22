@@ -5,7 +5,7 @@ from app.db import Base, engine
 from app.models.users import User
 
 # Create tables
-Base.metadata.create_all(bind=engine)
+# Base.metadata.create_all(bind=engine)
 
 from app.api import auth
 
