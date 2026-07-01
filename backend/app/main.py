@@ -1,17 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.db import Base, engine
-from app.models.users import User
-
-# Create tables
-# Base.metadata.create_all(bind=engine)
-
-from app.api import auth
+from app.api import auth, documents
 
 app = FastAPI(title="Knowledge Assistant API")
 
-# CORS
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -20,8 +13,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Routes
-app.include_router(auth.router, prefix="/api/auth", tags=["auth"])
+app.include_router(auth.router, prefix="/api/auth")
+app.include_router(documents.router, prefix="/api")
+
 
 @app.get("/health")
 def health_check():

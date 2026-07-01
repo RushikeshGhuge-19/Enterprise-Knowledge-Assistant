@@ -30,5 +30,8 @@ services:
     env_file:
       - .env
 
+    volumes:
+      - .:/app
+
 volumes:
   postgres_data:
