@@ -8,6 +8,7 @@ from app.models.users import User
 from app.db import Base
 from app.core.config import settings
 from app.models.document import Document
+from app.models.chunk import Chunk
 
 # Import ALL models here
 # Example:
