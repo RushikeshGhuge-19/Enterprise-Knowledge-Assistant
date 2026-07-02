@@ -242,3 +242,300 @@ http://localhost:8000/docs
 **Week 1 Complete ✅**
 
 Infrastructure foundation established and ready for document ingestion and RAG implementation in Week 2.
+
+---
+
+# Week 2 - Document Ingestion Pipeline
+
+Week 2 focused on building the complete document ingestion pipeline required before implementing Retrieval-Augmented Generation (RAG). The application can now upload documents, process PDF content, clean extracted text, generate chunks, and persist them in PostgreSQL.
+
+---
+
+## Week 2 Objectives
+
+* Build Document Management Module
+* Implement PDF Upload API
+* Design Document Database Model
+* Extract Text from PDF Files
+* Build Text Cleaning Pipeline
+* Generate Text Chunks
+* Store Chunks in PostgreSQL
+* Create Modular Service Layer
+* Prepare Backend for Embedding Generation
+
+---
+
+## Features Implemented
+
+### Document Management
+
+Implemented a dedicated document module.
+
+Features:
+
+* Document Upload
+* Document Metadata Storage
+* User Ownership
+* Upload Timestamp
+* File Path Management
+
+Database Model:
+
+```text
+Documents
+
+id
+filename
+filepath
+uploaded_by
+created_at
+```
+
+Relationship:
+
+```text
+User
+   │
+   └──────────► Documents
+```
+
+---
+
+### PDF Processing
+
+Created a dedicated PDF processing service using **PyMuPDF (fitz)**.
+
+Capabilities:
+
+* Open PDF Documents
+* Read Multiple Pages
+* Extract Complete Text
+* Count Total Pages
+
+---
+
+### Text Cleaning Pipeline
+
+Created a reusable preprocessing service.
+
+Processing includes:
+
+* Remove extra whitespace
+* Remove blank lines
+* Normalize extracted text
+* Prepare content for chunk generation
+
+---
+
+### Text Chunking
+
+Implemented a chunk generation service.
+
+Current Features:
+
+* Fixed-size chunk generation
+* Modular chunking architecture
+* Ready for overlap-based chunking
+
+Purpose:
+
+Prepare document content for semantic embeddings.
+
+---
+
+### Chunk Database
+
+Created a dedicated Chunk model.
+
+Database Structure:
+
+```text
+Documents
+      │
+      ▼
+Chunks
+```
+
+Chunk Fields:
+
+```text
+id
+document_id
+chunk_index
+content
+created_at
+```
+
+Relationship:
+
+```text
+Document
+      │
+      └──────────► Chunks
+```
+
+---
+
+### Chunk Storage
+
+Implemented a dedicated database service responsible for storing generated chunks.
+
+Responsibilities:
+
+* Save all generated chunks
+* Maintain document relationship
+* Efficient single transaction commit
+
+---
+
+### Service Layer
+
+Refactored the application into modular services.
+
+Current Services:
+
+```text
+services/
+
+document_service.py
+
+pdf_service.py
+
+text_cleaner.py
+
+chunk_service.py
+
+chunk_db_service.py
+
+ingestion_service.py
+```
+
+Each service has a single responsibility, making the project easier to maintain and extend.
+
+---
+
+## Updated Project Structure
+
+```text
+backend/
+
+├── app/
+│   │
+│   ├── api/
+│   │   ├── auth.py
+│   │   └── documents.py
+│   │
+│   ├── core/
+│   │
+│   ├── models/
+│   │   ├── users.py
+│   │   ├── document.py
+│   │   └── chunk.py
+│   │
+│   ├── schemas/
+│   │   ├── users.py
+│   │   └── document.py
+│   │
+│   ├── services/
+│   │   ├── document_service.py
+│   │   ├── pdf_service.py
+│   │   ├── text_cleaner.py
+│   │   ├── chunk_service.py
+│   │   ├── chunk_db_service.py
+│   │   └── ingestion_service.py
+│   │
+│   ├── db.py
+│   └── main.py
+│
+├── uploads/
+├── alembic/
+└── docker-compose.yml
+```
+
+---
+
+## Document Processing Pipeline
+
+```text
+Upload PDF
+      │
+      ▼
+Save File
+      │
+      ▼
+Create Document Record
+      │
+      ▼
+Extract PDF Text
+      │
+      ▼
+Clean Text
+      │
+      ▼
+Generate Chunks
+      │
+      ▼
+Store Chunks
+```
+
+---
+
+## Database Schema
+
+```text
+Users
+   │
+   ▼
+Documents
+   │
+   ▼
+Chunks
+```
+
+---
+
+## New API Endpoints
+
+### Documents
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | /documents/upload | Upload and process PDF documents |
+
+---
+
+## Week 2 Deliverables Completed
+
+* Document Model
+* Chunk Model
+* User → Document Relationship
+* Document → Chunk Relationship
+* PDF Upload Pipeline
+* PDF Text Extraction
+* Text Cleaning
+* Text Chunk Generation
+* Chunk Storage
+* Modular Service Layer
+* Docker Development Improvements
+* Database Migrations
+
+---
+
+## Current Status
+
+**Week 2 Complete ✅**
+
+The backend now supports end-to-end document ingestion. Uploaded PDF documents are processed into structured text chunks and stored in PostgreSQL, providing the foundation for semantic embeddings and Retrieval-Augmented Generation (RAG).
+
+---
+
+## Next Phase (Week 3)
+
+Week 3 will focus on the AI layer by implementing:
+
+* Sentence Transformer Embeddings
+* pgvector Integration
+* Vector Similarity Search
+* Retrieval Pipeline
+* LLM Integration
+* Conversational RAG
